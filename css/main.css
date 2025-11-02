@@ -1,0 +1,173 @@
+/*
+	Welcome to CSS styling! This is how we style our HTML pages. It is important to note how we select and change the styling for an element:
+
+	selector {
+		property: value;
+		property2: value2;
+	}
+
+	selector - The item we are selecting to be restyled. This can be an element name such as h1 or img, or the name of an id or class (#robots, .item-class)
+	property - A CSS property that we want to restyle the element with, such as font-size or color.
+	value - The value we want to set the property to, such as 16px or blue.
+
+	Make sure to separate different property/value statements with a colon between property: value, and a semicolon at the end of the property: value; statement. 
+*/
+
+
+
+/*
+	Below we have selected the body element - aka <body> - and are setting some styling for it. Generally it is a good idea to only select entire sets of elements to set default stylings. Aim to use classes when styling elements more specifically.
+*/
+body {
+	/*
+		Font family works by stating a series of fonts in order from most to least specific. The reason is to ensure that if the first font is not available, that we have fall-backs that the browser can load up if needed.
+	*/
+	font-family: Helvetica, Verdana, sans-serif;
+
+	/*
+		Margin sets the spacing outside of the borders of an element's box. Because we are only setting one value below, it makes it the margin value for all sides of our box, which in this case is all sides of our body element.
+	*/
+	margin: 1rem;
+
+	/*
+		Setting a default font size for all elements who are children of the body tag. How 'rems' work are explained in the next comment.
+	*/
+	font-size: 1.25rem;
+}
+
+
+
+/*
+	With the selection of the different heading elements below, we are using 'rem' units to establish a default hierarchy for their font sizes. Rem units refer to 'root-em' which are a multiple of the base font-size set by the browser. As a result, rem units are particularly useful for establishing hierarchies in type.
+*/
+h1 {
+	font-size: 3rem;
+	/*
+		We can be more specific than just 'margin' with our property and specify 'margin-bottom' instead. In this case, because we are setting a value of 0, there is no need to add a unit to the value.
+	*/
+
+	margin-bottom: 0;
+}
+
+h2 {
+	font-size: 2.25rem;
+	margin-bottom: 0;
+}
+
+h3 {
+	font-size: 1.6rem;
+	margin-bottom: 0;
+}
+
+
+
+/*
+	Below we are setting defaults for a series of selectors. The comma allows us to select a combination of elements.
+*/
+p, ol, ul {
+
+	/*
+		max-width is a property which easily allows us to ensure something does not extend past a certain point in width. In this case, we can use it to make line-lengths more manageable in our text.
+	*/
+	max-width: 40rem;
+}
+
+
+
+img {
+	/* 
+		We are saying we want the img to adjust its height accordingly when the width changes.
+	*/
+	height: auto; 
+
+	/* 
+		Then we tell it we don't want it to exceed 100% of the parent element. In this case it resizes with the 'body' tag (the browser window).
+	*/
+	max-width: 100%;
+
+	/* 
+		The three statements below allow us to set a border around our images, in order they set the width, the style (dashed, solid, etc), and then the color of the border.
+	*/
+	border-width: 1px;
+	border-style: solid;
+	border-color: black; 
+}
+
+
+/*
+	Because the figure element has a margin set on it by default, if we do not want it to have a margin we have to set the margin to zero.
+*/
+figure {
+	margin: 0;
+}
+
+figcaption {
+	font-style: italic;
+}
+
+
+
+a {
+	/*
+		Setting colours for elements can be done in a variety of ways. You can use just the colour name 'blue', you can use a HEX value '#00AAFF', you can specify an rgb value 'rgb(0,200,255)', and you can specify an rgb value with alpha (or opacity) using 'rgba(0,200,255,0.8)' (80%).
+	*/
+	color: rgb(200,0,0);
+
+	/*
+		The transition property makes it very easy to create smooth transitions for different CSS properties. In this case, with the two statements below we are specifying that we want to transition the 'color' property over 0.5 seconds. Note that you have to have another state for the element - example below in a:hover - for it to actually make use of the transition.
+	*/
+	transition-property: color;
+	transition-duration: 0.5s;
+}
+
+
+
+/* 
+	The :hover and :focus are pseudo-states for elements. In this case, we are saying when the anchor tag is the 'hover' (being hovered over) and 'focus' (selected by keyboard, i.e. tab) states it should apply the styling specified.
+*/
+a:hover, a:focus {
+	color: rgb(50,0,0); 
+	/*
+		The text-decoration property allows us to add or remove underlining. In this case we are removing it.
+	*/
+	text-decoration: none;
+}
+
+
+
+/*
+	Here we are selecting the elements with the .button class that are inside of the nav tag
+*/
+.nav-main-item {
+	display: inline-block;
+	color: white;
+	background-color: rgb(250,100,75);
+	font-size: 1.5rem;
+	
+	/*
+		By setting two values for padding below, we are now specifying different values for the top/bottom and the left/right in that order. This compound declaration can also be used to set different padding values for each of the sides of a box in top, right, bottom, left order. Example:
+
+		padding: top right bottom left; would be 
+		padding: 10rem 5rem 2rem 12rem;
+	*/
+	padding: 0.5rem 0.75rem;
+
+	/*
+		Because our anchor tags have an underline by default, we end up having to remove them for our buttons (by default).
+	*/
+	text-decoration: none;
+
+	/*
+		Unlike our prior transition statement, here we are also adding a type of easing to the transition.
+	*/
+	transition-property: background-color;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-out;
+}
+
+
+.nav-main-item:active, .nav-main-item:hover, .nav-main-item:focus {
+	color: white;
+	background-color: rgb(50,50,50);
+}
+
